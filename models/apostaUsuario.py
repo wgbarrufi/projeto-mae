@@ -1,6 +1,7 @@
 from datetime import datetime
 from models.aposta import Aposta
 from models.usuario import Usuario
+from statusAposta import StatusAposta
 
 class ApostaUsuario:
     usuario: Usuario
@@ -15,5 +16,5 @@ class ApostaUsuario:
         self.aposta = aposta
         self.valorPontos = valorPontos
         self.multiplicador = 1
-        self.status = "Pendente"
+        self.status = StatusAposta.PENDENTE
         self.dataAposta = datetime.now()
