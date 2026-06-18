@@ -1,12 +1,20 @@
+from datetime import datetime
+
 from models.partida import Partida
+from models.usuario import Usuario
+from statusAposta import StatusAposta
 
-class Aposta():
-    partida: Partida
-    odd: float
-    palpite: str
-    
 
-    def __init__(self, partida: Partida, odd: float, palpite: str):
+class Aposta:
+
+    def __init__(self, usuario: Usuario, partida: Partida, palpite: str, odd: float, valorPontos: float):
+        self.usuario = usuario
         self.partida = partida
-        self.odd = odd
         self.palpite = palpite
+        self.odd = odd
+        self.valorPontos = valorPontos
+        self.multiplicador = 1
+        self.status = StatusAposta.PENDENTE
+        self.dataAposta = datetime.now()
+
+        
