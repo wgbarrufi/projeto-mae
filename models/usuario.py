@@ -28,12 +28,6 @@ class Usuario:
         if not any(c.isupper() for c in self.senha):
             return "A senha deve conter pelo menos uma letra maiuscula."
         return "A senha é válida."
-
-    def checkSenha(self):
-       if self.setSenha() == "A senha é válida.":
-           return "Validação de senha feiita!! É valida"
-       else:
-           return "Validação de senha feiita!! Não é valida"
        
     def setIdade(self):
         hoje = date.today()
@@ -47,15 +41,7 @@ class Usuario:
             return "A idade deve ser maior ou igual a 18 anos."
 
         return "Idade válida."
-
-    def checkIdade(self):
-        if self.setIdade() == "Idade válida.":
-            return "Validação de idade feita! É válida"
-        else:
-            return "Validação de idade feita! Não é válida"
-
     
-
 
 #======================== TESTE ========================
 
@@ -74,6 +60,5 @@ if __name__ == "__main__":
     usuario1 = Usuario(nome, email, cpf, dataNascimento, login, senha, tipo)
 
     print(usuario1.setIdade())
-    print(usuario1.checkIdade())
 
         
