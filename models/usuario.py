@@ -42,7 +42,7 @@ class Usuario:
 
         return "Idade válida."
     
-
+    
 #======================== TESTE ========================
 
 if __name__ == "__main__":
