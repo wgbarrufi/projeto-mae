@@ -11,8 +11,7 @@ class FootballDataClient:
     BASE_URL = "https://api.football-data.org/v4"
 
     def __init__(self):
-        print(self.api_key)
-        
+
         self.api_key = os.getenv(
             "FOOTBALL_DATA_API_KEY"
         )
