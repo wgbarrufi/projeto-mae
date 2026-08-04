@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="form-container">
+
+    <h1>
+        {{ partida.time_casa }}
+        x
+        {{ partida.time_visitante }}
+    </h1>
+
+    <form method="POST">
+
+        <input
+            type="number"
+            name="gols_casa"
+            placeholder="Gols Casa"
+            required
+        >
+
+        <input
+            type="number"
+            name="gols_visitante"
+            placeholder="Gols Visitante"
+            required
+        >
+
+        <button type="submit">
+            Encerrar Partida
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

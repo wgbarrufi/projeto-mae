@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Ranking
+{% endblock %}
+
+{% block conteudo %}
+
+<section class="ranking-container">
+
+    <h1>Ranking de Jogadores</h1>
+
+    {% for usuario in usuarios %}
+
+    <div class="ranking-card">
+
+        <h3>
+            {{ loop.index }}º - {{ usuario.nome }}
+        </h3>
+
+        <p>
+            {{ usuario.pontos }} pts
+        </p>
+
+    </div>
+
+    {% endfor %}
+
+</section>
+
+{% endblock %}

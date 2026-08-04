@@ -1,9 +1,7 @@
 from enum import Enum
 
-class StatusAposta(Enum):
+class StatusAposta(str, Enum):
     PENDENTE = "PENDENTE"
     GANHOU = "GANHOU"
     PERDEU = "PERDEU"
     EMPATE = "EMPATE"
-    ATIVO = "ATIVO"
-    INATIVO = "INATIVO"

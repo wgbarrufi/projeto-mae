@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Partidas
+{% endblock %}
+
+{% block conteudo %}
+
+<div class="partidas-container">
+
+    <h1>Partidas Disponíveis</h1>
+
+    {% for partida in partidas %}
+
+    <div class="card-partida">
+
+        <h3>
+            {{ partida.time_casa }}
+            x
+            {{ partida.time_visitante }}
+        </h3>
+
+        <p>
+            📅 {{ partida.data_hora.strftime('%d/%m/%Y') }}
+            &nbsp;&nbsp;
+            ⏰ {{ partida.data_hora.strftime('%H:%M') }}
+        </p>
+
+            <a href="/apostar/{{ partida.id }}/CASA" class="btn-aposta">
+                Casa 
+            </a>
+            &nbsp;
+            <a href="/apostar/{{ partida.id }}/EMPATE" class="btn-aposta">
+                Empate
+            </a>
+            &nbsp;
+            <a href="/apostar/{{ partida.id }}/VISITANTE" class="btn-aposta">
+                Visitante
+            </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

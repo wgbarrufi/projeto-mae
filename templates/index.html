@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Sistema de Apostas
+{% endblock %}
+
+{% block conteudo %}
+
+<section class="hero">
+
+    <img class="bola" src="{{ url_for('static', filename='img/logo.png') }}">
+
+    <h2>Bem-vindo ao</h2>
+
+    <h1>Sistema de Apostas</h1>
+
+    <div class="linha"></div>
+
+    <p>
+
+        Aqui você poderá apostar nas partidas do Campeonato Brasileiro.
+
+    </p>
+
+    <div class="botoes">
+
+        <a href="/login" class="btn-verde">
+
+            Entrar
+
+        </a>
+
+        <a href="/cadastro" class="btn-outline">
+
+            Criar Conta
+
+        </a>
+
+    </div>
+
+    <div class="divisor">
+
+        ★
+
+    </div>
+
+    <p class="frase">
+
+        Aposte com estratégia, vença com inteligência.
+
+    </p>
+
+</section>
+
+{% endblock %}

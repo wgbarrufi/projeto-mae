@@ -1,0 +1,523 @@
+/* ========================= */
+/* RESET */
+/* ========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:#08101f;
+
+    background-image:
+    radial-gradient(circle at center,#0d1730 0%,#08101f 80%);
+
+    color:white;
+
+    min-height:100vh;
+
+}
+
+
+/* ========================= */
+/* HEADER */
+/* ========================= */
+
+header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:25px 55px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.logo img{
+
+    width:46px;
+
+    height:46px;
+
+    filter:
+
+    drop-shadow(0 0 15px rgba(0,255,120,.35));
+
+}
+
+.logo h1{
+
+    color:#2ed35b;
+
+    font-size:32px;
+
+    font-weight:700;
+
+}
+
+
+/* ========================= */
+/* MENU */
+/* ========================= */
+
+nav{
+
+    display:flex;
+
+    gap:50px;
+
+}
+
+nav a{
+
+    text-decoration:none;
+
+    color:white;
+
+    font-size:23px;
+
+    transition:.3s;
+
+    position:relative;
+
+}
+
+nav a:hover{
+
+    color:#2ed35b;
+
+}
+
+nav a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-12px;
+
+    width:0;
+
+    height:3px;
+
+    background:#2ed35b;
+
+    transition:.3s;
+
+}
+
+nav a:hover::after{
+
+    width:100%;
+
+}
+
+main{
+
+    width:100%;
+
+}
+nav .ativo{
+
+    color:#2ed35b;
+
+}
+
+nav .ativo::after{
+
+    width:100%;
+
+}
+.hero{
+    min-height: calc(100vh - 100px);
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px;
+}
+
+.bola{
+    width:180px;
+    margin-bottom:30px;
+
+    filter:
+    drop-shadow(0 0 30px rgba(0,255,120,.25));
+}
+
+.hero h2{
+    font-size:42px;
+    font-weight:700;
+}
+
+.hero h1{
+    font-size:72px;
+    color:#2ed35b;
+    margin-top:10px;
+}
+
+.linha{
+    width:120px;
+    height:4px;
+
+    background:#2ed35b;
+
+    margin:25px 0 35px 0;
+
+    border-radius:20px;
+}
+
+.hero p{
+    font-size:28px;
+    color:#d5d5d5;
+}
+
+.botoes{
+    margin-top:45px;
+
+    display:flex;
+    gap:25px;
+}
+
+.btn-verde{
+    background:#2ed35b;
+    color:white;
+
+    text-decoration:none;
+
+    padding:18px 50px;
+
+    border-radius:12px;
+
+    font-size:22px;
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.btn-verde:hover{
+    transform:translateY(-3px);
+}
+
+.btn-outline{
+    border:2px solid #2ed35b;
+
+    color:#2ed35b;
+
+    text-decoration:none;
+
+    padding:18px 50px;
+
+    border-radius:12px;
+
+    font-size:22px;
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.btn-outline:hover{
+    background:#2ed35b;
+    color:white;
+}
+
+.divisor{
+    margin-top:60px;
+
+    color:#2ed35b;
+
+    font-size:28px;
+}
+
+.frase{
+    margin-top:20px;
+
+    font-size:22px;
+    color:#bdbdbd;
+}
+.container-form{
+
+    width:500px;
+
+    margin:80px auto;
+
+    background:#0f172a;
+
+    padding:40px;
+
+    border-radius:16px;
+
+    box-shadow:0 0 30px rgba(0,0,0,.3);
+
+}
+
+.container-form h2{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+    color:#2ed35b;
+
+}
+
+.container-form form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+.container-form input{
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+}
+
+.container-form button{
+
+    background:#2ed35b;
+
+    color:white;
+
+    border:none;
+
+    padding:14px;
+
+    border-radius:8px;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+}
+.form-container{
+
+    width:450px;
+
+    margin:80px auto;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:20px;
+
+    text-align:center;
+}
+
+.form-container h1{
+
+    color:#2ed35b;
+
+    margin-bottom:20px;
+}
+
+.form-container form{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:15px;
+}
+
+.form-container input{
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+}
+
+.form-container button{
+
+    padding:15px;
+
+    background:#2ed35b;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:18px;
+
+    cursor:pointer;
+}
+.partidas-container{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:40px auto;
+}
+
+.partidas-container h1{
+
+    text-align:center;
+
+    color:#2ed35b;
+
+    margin-bottom:30px;
+}
+
+.card-partida{
+
+    background:#0f1a33;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:12px;
+
+    padding:20px;
+
+    margin-bottom:15px;
+}
+
+.card-partida h3{
+
+    margin-bottom:10px;
+}
+
+.card-partida p{
+
+    color:#bdbdbd;
+
+    margin-bottom:15px;
+}
+
+.acoes{
+
+    display:flex;
+
+    gap:10px;
+}
+
+.acoes button{
+
+    background:#2ed35b;
+
+    border:none;
+
+    color:white;
+
+    padding:10px 20px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+}
+.btn-aposta{
+    background:#2ed35b;
+    color:white;
+    text-decoration:none;
+
+    padding:10px 20px;
+
+    border-radius:50px;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.btn-aposta:hover{
+    opacity:.85;
+}
+.badge-palpite{
+    background:#2ed35b;
+    color:white;
+    padding:4px 10px;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+.badge-status{
+    background:#ffc107;
+    color:black;
+    padding:4px 10px;
+    border-radius:6px;
+    font-weight:bold;
+}
+.ranking-container{
+    max-width:1200px;
+    margin:40px auto;
+    padding:20px;
+}
+
+.ranking-container h1{
+    text-align:center;
+    color:#2ed35b;
+    margin-bottom:40px;
+}
+
+.ranking-card{
+    background:#0d1b3b;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:15px;
+
+    padding:20px;
+    margin-bottom:20px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.ranking-card h3{
+    color:white;
+}
+
+.ranking-card p{
+    color:#2ed35b;
+    font-size:22px;
+    font-weight:bold;
+}
+.mensagem{
+    background:#2ed35b;
+    color:white;
+    padding:15px;
+    margin:20px;
+    border-radius:10px;
+    text-align:center;
+    font-weight:bold;
+}

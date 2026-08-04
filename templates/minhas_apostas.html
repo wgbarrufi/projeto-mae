@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Minhas Apostas
+{% endblock %}
+
+{% block conteudo %}
+
+<div class="partidas-container">
+
+    <h1>Minhas Apostas</h1>
+
+    {% for aposta in apostas %}
+
+    <div class="card-partida">
+
+        <h3>
+
+            {{ aposta.partida.time_casa }}
+
+            x
+
+            {{ aposta.partida.time_visitante }}
+
+        </h3>
+        <p>
+            Data:
+            {{ aposta.partida.data_hora.strftime('%d/%m/%Y %H:%M') }}
+        </p>
+
+        <p>
+
+            Palpite:
+            <span class="badge-palpite">
+                {{ aposta.palpite }}
+            </span>
+
+        </p>
+
+        <p>
+
+            Valor:
+            {{ aposta.valor_pontos }} pts
+
+        </p>
+
+        <p>
+
+            Status:
+            <span class="badge-status">
+                {{ aposta.status.value }}
+            </span>
+
+        </p>
+
+        <p>Odd: {{ aposta.odd }}</p>
+
+        <p>Multiplicador: x{{ aposta.multiplicador }}</p>
+        
+        
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
