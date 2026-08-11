@@ -48,11 +48,11 @@ class UsuarioService:
 
     def __senha_valida(self, senha: str) -> bool:
 
-        regex = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$"
+        regex= r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$"
 
         return bool(re.match(regex, senha))
 
-    def autenticar(self, login: str, senha: str):
+    def autenticar(self,login: str, senha: str):
 
         usuario = self.repository.buscar_por_login(login)
 

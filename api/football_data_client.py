@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 class FootballDataClient:
 
     BASE_URL = "https://api.football-data.org/v4"

@@ -30,9 +30,9 @@ class PartidaService:
                 data_hora=datetime.fromisoformat(
                     jogo["utcDate"].replace("Z", "+00:00")
                 ),
-                odd_casa=1.0,
-                odd_empate=1.0,
-                odd_visitante=1.0,
+                odd_casa = 1.0,
+                odd_empate = 1.0,
+                odd_visitante = 1.0,
             )
 
             self.repository.salvar(partida)

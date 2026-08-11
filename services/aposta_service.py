@@ -1,6 +1,7 @@
 from models.aposta import Aposta
 from models.status_aposta import StatusAposta
 from repositories.aposta_repository import ApostaRepository
+
 from repositories.usuario_repository import UsuarioRepository
 
 
