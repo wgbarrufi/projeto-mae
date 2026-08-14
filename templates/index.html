@@ -24,19 +24,29 @@ Sistema de Apostas
 
     <div class="botoes">
 
+    {% if session.get("usuario_id") %}
+
+        <a href="/partidas" class="btn-verde">
+            Ver Partidas
+        </a>
+
+        <a href="/minhas-apostas" class="btn-outline">
+            Minhas Apostas
+        </a>
+
+    {% else %}
+
         <a href="/login" class="btn-verde">
-
             Entrar
-
         </a>
 
         <a href="/cadastro" class="btn-outline">
-
             Criar Conta
-
         </a>
 
-    </div>
+    {% endif %}
+
+</div>
 
     <div class="divisor">
 

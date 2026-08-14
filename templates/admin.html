@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Painel Administrativo
+{% endblock %}
+
+{% block conteudo %}
+
+<div class="admin-container">
+
+    <h1>Painel Administrativo</h1>
+
+    <div class="admin-menu">
+
+        <a href="/admin/partidas" class="btn-admin">
+            Gerenciar Partidas
+        </a>
+
+        <a href="/admin/usuarios" class="btn-admin">
+            Gerenciar Usuários
+        </a>
+
+        <a href="/admin/apostas" class="btn-admin">
+            Ver Apostas
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

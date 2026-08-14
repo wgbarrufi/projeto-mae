@@ -25,9 +25,25 @@
 
     <nav>
 
-        <a class="ativo" href="/">Início</a>
+        <a href="/">Início</a>
 
-        {% if session.get('usuario_nome') %}
+        <a href="/ranking">Ranking</a>
+
+        {% if session.get('usuario_id') %}
+
+            <a href="/partidas">
+                Partidas
+            </a>
+
+            <a href="/minhas-apostas">
+                Minhas Apostas
+            </a>
+
+            {% if session.get("usuario_tipo") == "ADMIN" %}
+                <a href="/admin">
+                    Admin
+                </a>
+            {% endif %}
 
             <a href="#">
                 Olá, {{ session.get('usuario_nome') }}
@@ -40,34 +56,34 @@
 
         {% else %}
 
-            <a href="/login">Entrar</a>
+            <a href="/login">
+                Entrar
+            </a>
 
-            <a href="/cadastro">Cadastro</a>
+            <a href="/cadastro">
+                Cadastro
+            </a>
 
         {% endif %}
-        
-        <a href="/partidas">Partidas</a>
-        <a href="/minhas-apostas">Minhas Apostas</a>
-        <a href="/ranking">Ranking</a>
 
     </nav>
 
 </header>
 
 <main>
-    
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-        {% for message in messages %}
-            <div class="mensagem">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
-{% endwith %}
 
-{% block conteudo %}
-{% endblock %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="mensagem">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block conteudo %}
+    {% endblock %}
 
 </main>
 

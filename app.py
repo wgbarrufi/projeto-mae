@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, flash
 
+from repositories.aposta_repository import ApostaRepository
 from repositories.partida_repository import PartidaRepository
 
 from models.usuario import Usuario
@@ -72,6 +73,9 @@ def login():
             session["usuario_id"] = usuario.id
             session["usuario_nome"] = usuario.nome
             session["usuario_pontos"] = usuario.pontos
+            session["usuario_tipo"] = usuario.tipo
+
+            print(usuario.tipo)
 
             return redirect("/")
         
@@ -165,6 +169,9 @@ def ranking():
 )
 def encerrar_partida(partida_id):
 
+    if session.get("usuario_tipo") != "ADMIN":
+        return "Acesso negado"
+
     if request.method == "POST":
 
         gols_casa = int(
@@ -194,7 +201,53 @@ def encerrar_partida(partida_id):
         partida=partida
     )
 
+@app.route("/admin")
+def admin():
 
+    if session.get("usuario_tipo") != "ADMIN":
+        return "Acesso negado"
+
+    return render_template("admin.html")
+
+
+@app.route("/admin/partidas")
+def admin_partidas():
+
+    if session.get("usuario_tipo") != "ADMIN":
+        return "Acesso negado"
+
+    partidas = PartidaRepository().listar()
+
+    return render_template(
+        "admin_partidas.html",
+        partidas=partidas
+    )
+
+@app.route("/admin/usuarios")
+def admin_usuarios():
+
+    if session.get("usuario_tipo") != "ADMIN":
+        return "Acesso negado"
+
+    usuarios = UsuarioService().repository.listar()
+
+    return render_template(
+        "admin_usuarios.html",
+        usuarios=usuarios
+    )
+
+@app.route("/admin/apostas")
+def admin_apostas():
+
+    if session.get("usuario_tipo") != "ADMIN":
+        return "Acesso negado"
+
+    apostas = ApostaRepository().listar()
+
+    return render_template(
+        "admin_apostas.html",
+        apostas=apostas
+    )
 
 
 

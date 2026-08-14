@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<h1>Gerenciar Partidas</h1>
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Partida</th>
+        <th>Data</th>
+        <th>Status</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for partida in partidas %}
+
+    <tr>
+
+        <td>{{ partida.id }}</td>
+
+        <td>
+            {{ partida.time_casa }}
+            x
+            {{ partida.time_visitante }}
+        </td>
+
+        <td>
+            {{ partida.data_hora.strftime('%d/%m/%Y %H:%M') }}
+        </td>
+
+        <td>
+
+            {% if partida.encerrada %}
+                Encerrada
+            {% else %}
+                Aberta
+            {% endif %}
+
+        </td>
+
+        <td>
+
+            {% if not partida.encerrada %}
+
+            <a href="/encerrar-partida/{{ partida.id }}">
+                Encerrar
+            </a>
+
+            {% endif %}
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}
