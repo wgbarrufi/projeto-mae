@@ -459,6 +459,37 @@ nav .ativo::after{
 
     transition:.3s;
 }
+.odds-container{
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+}
+
+.btn-aposta{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.odd{
+
+    background:rgba(0,0,0,.25);
+
+    padding:4px 8px;
+
+    border-radius:6px;
+
+    font-size:14px;
+
+}
 
 .btn-aposta:hover{
     opacity:.85;
@@ -520,4 +551,609 @@ nav .ativo::after{
     border-radius:10px;
     text-align:center;
     font-weight:bold;
+}
+
+/* ========================= */
+/* PAINEL ADMINISTRATIVO */
+/* ========================= */
+
+.admin-page{
+
+    width:90%;
+
+    max-width:1400px;
+
+    margin:50px auto;
+
+}
+
+.admin-page h1{
+
+    text-align:center;
+
+    color:#2ed35b;
+
+    margin-bottom:40px;
+
+    font-size:38px;
+
+}
+
+
+.admin-box{
+
+    background:#0f1a33;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:15px;
+
+    padding:25px;
+
+    margin-bottom:30px;
+
+}
+
+
+.admin-box h2{
+
+    color:#2ed35b;
+
+    margin-bottom:20px;
+
+}
+
+
+.admin-box form{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+
+.admin-box input{
+
+    flex:1;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+}
+
+
+.admin-box button{
+
+    background:#2ed35b;
+
+    color:white;
+
+    border:none;
+
+    border-radius:8px;
+
+    padding:14px 30px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+
+.admin-box button:hover{
+
+    opacity:.85;
+
+}
+
+
+/* ========================= */
+/* RESULTADO USUÁRIO */
+/* ========================= */
+
+.usuario-encontrado{
+
+    background:#0d1b3b;
+
+    border:1px solid #2ed35b;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    margin-bottom:30px;
+
+}
+
+
+.usuario-encontrado h2{
+
+    color:#2ed35b;
+
+    margin-bottom:20px;
+
+}
+
+
+.usuario-encontrado p{
+
+    margin:10px 0;
+
+    color:#ddd;
+
+}
+
+
+.usuario-encontrado strong{
+
+    color:white;
+
+}
+
+
+/* ========================= */
+/* ERRO */
+/* ========================= */
+
+.admin-erro{
+
+    background:#8b1e2d;
+
+    color:white;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    margin-bottom:25px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+}
+
+
+/* ========================= */
+/* TABELA */
+/* ========================= */
+
+.tabela-container{
+
+    overflow-x:auto;
+
+}
+
+
+.tabela-container table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+
+.tabela-container th{
+
+    background:#172442;
+
+    color:#2ed35b;
+
+    padding:15px;
+
+    text-align:left;
+
+}
+
+
+.tabela-container td{
+
+    padding:15px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    color:#ddd;
+
+}
+
+
+.tabela-container tr:hover{
+
+    background:#15213d;
+
+}
+
+
+/* ========================= */
+/* BOTÃO VOLTAR */
+/* ========================= */
+
+.btn-voltar{
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:12px 25px;
+
+    border:2px solid #2ed35b;
+
+    border-radius:8px;
+
+    color:#2ed35b;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+
+.btn-voltar:hover{
+
+    background:#2ed35b;
+
+    color:white;
+
+}
+
+/* ========================= */
+/* PAINEL ADMINISTRATIVO */
+/* ========================= */
+
+.admin-page{
+
+    width:90%;
+    max-width:1100px;
+
+    margin:60px auto;
+
+}
+
+
+.admin-header{
+
+    text-align:center;
+
+    margin-bottom:45px;
+
+}
+
+
+.admin-header h1{
+
+    color:#2ed35b;
+
+    font-size:40px;
+
+    margin-bottom:12px;
+
+}
+
+
+.admin-header p{
+
+    color:#bdbdbd;
+
+    font-size:18px;
+
+}
+
+
+/* ========================= */
+/* MENU ADMIN */
+/* ========================= */
+
+.admin-menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+
+.admin-card{
+
+    background:#0f1a33;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:16px;
+
+    padding:28px 30px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+    text-decoration:none;
+
+    color:white;
+
+    transition:.3s;
+
+}
+
+
+.admin-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:#2ed35b;
+
+    box-shadow:0 0 25px rgba(46,211,91,.12);
+
+}
+
+
+.admin-icon{
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:15px;
+
+    background:rgba(46,211,91,.12);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:30px;
+
+}
+
+
+.admin-card-text{
+
+    flex:1;
+
+}
+
+
+.admin-card-text h2{
+
+    color:#2ed35b;
+
+    margin-bottom:8px;
+
+    font-size:22px;
+
+}
+
+
+.admin-card-text p{
+
+    color:#bdbdbd;
+
+    font-size:16px;
+
+}
+
+
+.admin-arrow{
+
+    color:#2ed35b;
+
+    font-size:32px;
+
+    transition:.3s;
+
+}
+
+
+.admin-card:hover .admin-arrow{
+
+    transform:translateX(8px);
+
+}
+/* ========================= */
+/* STATUS DAS PARTIDAS */
+/* ========================= */
+
+.status-aberta{
+
+    display:inline-block;
+
+    background:#2ed35b;
+
+    color:white;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+}
+
+
+.status-encerrada{
+
+    display:inline-block;
+
+    background:#555;
+
+    color:white;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+}
+
+
+/* ========================= */
+/* BOTÃO ENCERRAR */
+/* ========================= */
+
+.btn-encerrar{
+
+    display:inline-block;
+
+    background:#ffc107;
+
+    color:#111;
+
+    padding:9px 16px;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+
+.btn-encerrar:hover{
+
+    transform:translateY(-2px);
+
+    opacity:.9;
+
+}
+
+
+.texto-finalizada{
+
+    color:#888;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+}
+/* ========================= */
+/* FILTROS DE PARTIDAS */
+/* ========================= */
+
+.filtros-partidas{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-bottom:25px;
+
+}
+
+
+.filtros-partidas input{
+
+    flex:1;
+
+    padding:15px;
+
+    background:#0f1a33;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:10px;
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+
+.filtros-partidas input:focus{
+
+    outline:none;
+
+    border-color:#2ed35b;
+
+}
+
+
+.filtros-partidas select{
+
+    padding:15px 20px;
+
+    background:#0f1a33;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:10px;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+
+.filtros-partidas select:focus{
+
+    outline:none;
+
+    border-color:#2ed35b;
+
+}
+.btn-cancelar-conta{
+
+    background:#8b1e2d;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 16px;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn-cancelar-conta:hover{
+
+    opacity:.85;
+
+}
+.admin-card-button{
+
+    width:100%;
+
+    border:none;
+
+    cursor:pointer;
+
+    text-align:left;
+
+    font-family:inherit;
+
 }

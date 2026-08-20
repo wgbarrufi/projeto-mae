@@ -56,6 +56,16 @@ Minhas Apostas
         <p>Odd: {{ aposta.odd }}</p>
 
         <p>Multiplicador: x{{ aposta.multiplicador }}</p>
+        {% if aposta.status.value == "PENDENTE" %}
+
+        <a
+            href="/multiplicar-aposta/{{ aposta.id }}"
+            class="btn-aposta"
+        >
+            Multiplicar aposta
+        </a>
+
+        {% endif %}
         
         
     </div>

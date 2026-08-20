@@ -7,7 +7,7 @@ from models.tipo_usuario import TipoUsuario
 
 repo = UsuarioRepository()
 
-usuario = repo.buscar_por_login("wagnerlogin")
+usuario = repo.buscar_por_login("adm")
 
 usuario.tipo = TipoUsuario.ADMIN
 

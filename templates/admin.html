@@ -6,22 +6,121 @@ Painel Administrativo
 
 {% block conteudo %}
 
-<div class="admin-container">
+<div class="admin-page">
 
-    <h1>Painel Administrativo</h1>
+    <div class="admin-header">
+
+        <h1>Painel Administrativo</h1>
+        
+        <p>
+            Gerencie partidas, usuários e apostas do sistema.
+        </p>
+
+    </div>
+
 
     <div class="admin-menu">
+        <form
+    action="/admin/sincronizar-partidas"
+    method="POST"
+>
 
-        <a href="/admin/partidas" class="btn-admin">
-            Gerenciar Partidas
+    <button
+        type="submit"
+        class="admin-card admin-card-button"
+    >
+
+        <div class="admin-icon">
+            🔄
+        </div>
+
+        <div class="admin-card-text">
+
+            <h2>Importar Partidas da API</h2>
+
+            <p>
+                Consulta a API de futebol e cadastra
+                novas partidas no banco de dados.
+            </p>
+
+        </div>
+
+        <span class="admin-arrow">
+            →
+        </span>
+
+    </button>
+
+</form>
+
+        <a href="/admin/partidas" class="admin-card">
+
+            <div class="admin-icon">
+                ⚽
+            </div>
+
+            <div class="admin-card-text">
+                
+
+                <h2>Gerenciar Partidas</h2>
+
+                <p>
+                    Visualize e encerre as partidas cadastradas.
+                </p>
+
+            </div>
+
+            <span class="admin-arrow">
+                →
+            </span>
+
         </a>
 
-        <a href="/admin/usuarios" class="btn-admin">
-            Gerenciar Usuários
+
+        <a href="/admin/usuarios" class="admin-card">
+
+            <div class="admin-icon">
+                👥
+            </div>
+            
+
+            <div class="admin-card-text">
+
+                <h2>Gerenciar Usuários</h2>
+
+                <p>
+                    Consulte os usuários cadastrados no sistema.
+                </p>
+
+            </div>
+
+            <span class="admin-arrow">
+                →
+            </span>
+
         </a>
 
-        <a href="/admin/apostas" class="btn-admin">
-            Ver Apostas
+
+        <a href="/admin/apostas" class="admin-card">
+
+            <div class="admin-icon">
+                📊
+            </div>
+
+            <div class="admin-card-text">
+
+                <h2>Consultar Apostas</h2>
+
+                <p>
+                    Pesquise apostas, apostadores e odds das partidas.
+                </p>
+
+            </div>
+
+            <span class="admin-arrow">
+                →
+            </span>
+
         </a>
 
     </div>

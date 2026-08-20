@@ -5,6 +5,12 @@ from models.aposta import Aposta
 from sqlalchemy.orm import selectinload
 
 class ApostaRepository:
+    """
+    Camada de acesso aos dados das apostas.
+
+    Centraliza operações de consulta, inserção e atualização
+    utilizando SQLModel e SQLite.
+    """
 
     def salvar(self, aposta: Aposta):
 
@@ -36,7 +42,13 @@ class ApostaRepository:
                     Aposta.partida_id == partida_id
                 )
             ).first()
+        
+    def buscar_por_id(self, aposta_id: int):
 
+        with get_session() as session:
+
+            return session.get(Aposta, aposta_id)
+        
     def listar_por_usuario(self, usuario_id):
         with get_session() as session:
 
@@ -52,8 +64,15 @@ class ApostaRepository:
 
         with get_session() as session:
 
-            statement = select(Aposta).where(
-                Aposta.partida_id == partida_id
+            statement = (
+                select(Aposta)
+                .options(
+                    selectinload(Aposta.usuario),
+                    selectinload(Aposta.partida)
+                )
+                .where(
+                    Aposta.partida_id == partida_id
+                )
             )
 
             return session.exec(statement).all()

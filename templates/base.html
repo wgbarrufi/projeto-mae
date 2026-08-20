@@ -25,48 +25,75 @@
 
     <nav>
 
-        <a href="/">Início</a>
+    <a href="/">Início</a>
 
-        <a href="/ranking">Ranking</a>
+    <a href="/ranking">Ranking</a>
 
-        {% if session.get('usuario_id') %}
+    {% if session.get('usuario_id') %}
 
-            <a href="/partidas">
-                Partidas
+        <a href="/partidas">
+            Partidas
+        </a>
+        <a href="/resultados">
+    Resultados
+</a>
+        <a href="/minhas-apostas">
+            Minhas Apostas
+        </a>
+
+        <a href="/saldo">
+            Meu Saldo
+        </a>
+
+        <a href="/trocar-senha">
+            Trocar Senha
+        </a>
+
+        {% if session.get("usuario_tipo") == "ADMIN" %}
+            <a href="/admin">
+                Admin
             </a>
-
-            <a href="/minhas-apostas">
-                Minhas Apostas
-            </a>
-
-            {% if session.get("usuario_tipo") == "ADMIN" %}
-                <a href="/admin">
-                    Admin
-                </a>
-            {% endif %}
-
-            <a href="#">
-                Olá, {{ session.get('usuario_nome') }}
-                ({{ session.get('usuario_pontos') }} pts)
-            </a>
-
-            <a href="/logout">
-                Sair
-            </a>
-
-        {% else %}
-
-            <a href="/login">
-                Entrar
-            </a>
-
-            <a href="/cadastro">
-                Cadastro
-            </a>
-
         {% endif %}
 
-    </nav>
+        <a href="#">
+
+            Olá, {{ session.get('usuario_nome') }}
+            ({{ session.get('usuario_pontos') }} pts)
+
+        </a>
+
+        <form
+    action="/cancelar-participacao"
+    method="POST"
+    onsubmit="return confirm('Tem certeza que deseja cancelar sua participação? Sua conta ficará inativa.')"
+>
+
+    <button
+        type="submit"
+        class="btn-cancelar-conta"
+    >
+        Cancelar participação
+    </button>
+
+</form>
+
+        <a href="/logout">
+            Sair
+        </a>
+
+    {% else %}
+
+        <a href="/login">
+            Entrar
+        </a>
+
+        <a href="/cadastro">
+            Cadastro
+        </a>
+
+    {% endif %}
+
+</nav>
 
 </header>
 

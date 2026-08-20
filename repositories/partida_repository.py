@@ -9,7 +9,10 @@ from datetime import datetime
 from sqlmodel import select
 
 class PartidaRepository:
-
+    """
+    Camada de acesso aos dados das partidas.
+    """
+    
     def salvar(self, partida: Partida) -> Partida:
         with get_session() as session:
             session.add(partida)
@@ -46,6 +49,23 @@ class PartidaRepository:
             statement = select(Partida).where(
                 Partida.encerrada == False,
                 Partida.data_hora > agora
+            )
+
+            return session.exec(statement).all()
+
+    def buscar_resultados_por_time(self, nome_time: str):
+
+        with get_session() as session:
+
+            statement = select(Partida).where(
+                Partida.encerrada == True,
+                (
+                    Partida.time_casa.contains(nome_time)
+                    |
+                    Partida.time_visitante.contains(nome_time)
+                )
+            ).order_by(
+                Partida.data_hora.desc()
             )
 
             return session.exec(statement).all()

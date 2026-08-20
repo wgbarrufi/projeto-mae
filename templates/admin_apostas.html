@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Consultar Apostas
+{% endblock %}
+
+{% block conteudo %}
+
+<div class="admin-page">
+
+    <h1>Consultar Apostas da Partida</h1>
+
+    <!-- PESQUISA -->
+    <div class="admin-box">
+
+        <h2>Pesquisar por ID da Partida</h2>
+
+        <form method="POST">
+
+            <input
+                type="number"
+                name="partida_id"
+                placeholder="Digite o ID da partida"
+                required
+            >
+
+            <button type="submit">
+                Pesquisar
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- ERRO -->
+    {% if erro %}
+
+        <div class="admin-erro">
+
+            {{ erro }}
+
+        </div>
+
+    {% endif %}
+
+
+    <!-- RESULTADO DA PARTIDA -->
+    {% if partida %}
+
+        <div class="admin-box">
+
+            <h2>
+                {{ partida.time_casa }}
+                x
+                {{ partida.time_visitante }}
+            </h2>
+
+            <p>
+                <strong>ID da partida:</strong>
+                {{ partida.id }}
+            </p>
+
+            <p>
+                <strong>Data:</strong>
+                {{ partida.data_hora.strftime('%d/%m/%Y %H:%M') }}
+            </p>
+
+            <p>
+                <strong>Quantidade de apostadores:</strong>
+                {{ apostas|length }}
+            </p>
+
+        </div>
+
+
+        <!-- ODDS -->
+        <div class="admin-box">
+
+            <h2>Odds Atuais</h2>
+
+            <p>
+                <strong>Casa:</strong>
+                {{ "%.2f"|format(odds["CASA"]) }}
+            </p>
+
+            <p>
+                <strong>Empate:</strong>
+                {{ "%.2f"|format(odds["EMPATE"]) }}
+            </p>
+
+            <p>
+                <strong>Visitante:</strong>
+                {{ "%.2f"|format(odds["VISITANTE"]) }}
+            </p>
+
+        </div>
+
+
+        <!-- TABELA DE APOSTAS -->
+        <div class="admin-box">
+
+            <h2>Apostas Realizadas</h2>
+
+            {% if apostas %}
+
+                <div class="tabela-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Usuário</th>
+                                <th>Palpite</th>
+                                <th>Odd</th>
+                                <th>Valor</th>
+                                <th>Multiplicador</th>
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% for aposta in apostas %}
+
+                                <tr>
+
+                                    <td>
+                                        {{ aposta.usuario.nome }}
+                                    </td>
+
+                                    <td>
+                                        {{ aposta.palpite }}
+                                    </td>
+
+                                    <td>
+                                        {{ "%.2f"|format(aposta.odd) }}
+                                    </td>
+
+                                    <td>
+                                        {{ aposta.valor_pontos }} pts
+                                    </td>
+
+                                    <td>
+                                        x{{ aposta.multiplicador }}
+                                    </td>
+
+                                    <td>
+                                        {{ aposta.status.value }}
+                                    </td>
+
+                                </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            {% else %}
+
+                <p>
+                    Nenhuma aposta foi realizada nesta partida.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    {% endif %}
+
+
+    <a href="/admin" class="btn-voltar">
+        Voltar ao painel
+    </a>
+
+</div>
+
+{% endblock %}

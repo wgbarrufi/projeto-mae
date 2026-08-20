@@ -1,33 +1,196 @@
 {% extends 'base.html' %}
 
+{% block titulo %}
+Gerenciar Usuários
+{% endblock %}
+
 {% block conteudo %}
 
-<h1>Usuários</h1>
+<div class="admin-page">
 
-<table>
+    <h1>Gerenciar Usuários</h1>
 
-    <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Pontos</th>
-        <th>Acertos</th>
-        <th>Tipo</th>
-    </tr>
+    <!-- PESQUISA POR CPF -->
 
-    {% for usuario in usuarios %}
+    <div class="admin-box">
 
-    <tr>
+        <h2>Pesquisar usuário</h2>
 
-        <td>{{ usuario.id }}</td>
-        <td>{{ usuario.nome }}</td>
-        <td>{{ usuario.pontos }}</td>
-        <td>{{ usuario.acertos }}</td>
-        <td>{{ usuario.tipo }}</td>
+        <form method="POST">
 
-    </tr>
+            <input
+                type="text"
+                name="cpf"
+                placeholder="Digite o CPF"
+                required
+            >
 
-    {% endfor %}
+            <button type="submit">
+                Pesquisar
+            </button>
 
-</table>
+        </form>
+
+    </div>
+
+
+    <!-- RESULTADO DA PESQUISA -->
+
+    {% if erro %}
+
+        <div class="admin-erro">
+            {{ erro }}
+        </div>
+
+    {% endif %}
+
+
+    {% if usuario %}
+
+        <div class="usuario-encontrado">
+
+            <h2>Usuário encontrado</h2>
+
+            <p>
+                <strong>ID:</strong>
+                {{ usuario.id }}
+            </p>
+
+            <p>
+                <strong>Nome:</strong>
+                {{ usuario.nome }}
+            </p>
+
+            <p>
+                <strong>E-mail:</strong>
+                {{ usuario.email }}
+            </p>
+
+            <p>
+                <strong>CPF:</strong>
+                {{ usuario.cpf }}
+            </p>
+
+            <p>
+                <strong>Login:</strong>
+                {{ usuario.login }}
+            </p>
+
+            <p>
+                <strong>Pontos:</strong>
+                {{ usuario.pontos }}
+            </p>
+
+            <p>
+                <strong>Acertos:</strong>
+                {{ usuario.acertos }}
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                {{ usuario.status.value }}
+            </p>
+
+            <p>
+                <strong>Tipo:</strong>
+                {{ usuario.tipo.value }}
+            </p>
+
+        </div>
+
+    {% endif %}
+
+
+    <!-- LISTAGEM DE USUÁRIOS -->
+
+    <div class="admin-box">
+
+        <h2>Todos os usuários</h2>
+
+        {% if usuarios %}
+
+            <div class="tabela-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>CPF</th>
+                            <th>Pontos</th>
+                            <th>Acertos</th>
+                            <th>Status</th>
+                            <th>Tipo</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for usuario in usuarios %}
+
+                            <tr>
+
+                                <td>
+                                    {{ usuario.id }}
+                                </td>
+
+                                <td>
+                                    {{ usuario.nome }}
+                                </td>
+
+                                <td>
+                                    {{ usuario.email }}
+                                </td>
+
+                                <td>
+                                    {{ usuario.cpf }}
+                                </td>
+
+                                <td>
+                                    {{ usuario.pontos }}
+                                </td>
+
+                                <td>
+                                    {{ usuario.acertos }}
+                                </td>
+
+                                <td>
+                                    {{ usuario.status.value }}
+                                </td>
+
+                                <td>
+                                    {{ usuario.tipo.value }}
+                                </td>
+
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        {% else %}
+
+            <p>Nenhum usuário cadastrado.</p>
+
+        {% endif %}
+
+    </div>
+
+
+    <a href="/admin" class="btn-voltar">
+        ← Voltar ao painel
+    </a>
+
+</div>
 
 {% endblock %}

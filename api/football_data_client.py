@@ -1,9 +1,10 @@
+import os
 import requests
 
-import os
 from dotenv import load_dotenv
 
 load_dotenv()
+
 
 class FootballDataClient:
 
@@ -15,16 +16,16 @@ class FootballDataClient:
             "FOOTBALL_DATA_API_KEY"
         )
 
-        self.headers = {
+    @property
+    def headers(self):
+
+        return {
             "X-Auth-Token": self.api_key
         }
 
     def listar_partidas(self, competicao: str):
 
-        url = (
-            f"{self.BASE_URL}/competitions/"
-            f"{competicao}/matches"
-        )
+        url = f"{self.BASE_URL}/competitions/{competicao}/matches"
 
         response = requests.get(
             url,

@@ -1,7 +1,5 @@
 from typing import Optional
 
-from sqlmodel import select
-
 from database.session import get_session
 from models.usuario import Usuario
 
@@ -11,6 +9,9 @@ from database.connection import engine
 from models.usuario import Usuario
 
 class UsuarioRepository:
+    """
+    Camada de acesso aos dados dos usuários.
+    """
 
     def salvar(self, usuario: Usuario) -> Usuario:
         with get_session() as session:
@@ -59,7 +60,10 @@ class UsuarioRepository:
         with Session(engine) as session:
 
             usuarios = session.exec(
-                select(Usuario).order_by(Usuario.pontos.desc())
+                select(Usuario).order_by(
+                    Usuario.acertos.desc(),
+                    Usuario.pontos.desc()
+                )
             ).all()
 
             return usuarios

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Meu Saldo
+{% endblock %}
+
+{% block conteudo %}
+
+<div class="form-container">
+
+    <h1>Meu Saldo</h1>
+
+    <div class="card-partida">
+
+        <h2>{{ usuario.nome }}</h2>
+
+        <p>
+            Pontos disponíveis:
+        </p>
+
+        <h1 style="color:#2ed35b;">
+            {{ usuario.pontos }} pontos
+        </h1>
+
+    </div>
+
+</div>
+
+{% endblock %}

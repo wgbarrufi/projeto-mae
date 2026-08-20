@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Trocar Senha
+{% endblock %}
+
+{% block conteudo %}
+
+<div class="form-container">
+
+    <h1>Trocar Senha</h1>
+
+    <form method="POST">
+
+        <input
+            type="password"
+            name="senha_atual"
+            placeholder="Senha atual"
+            required
+        >
+
+        <input
+            type="password"
+            name="nova_senha"
+            placeholder="Nova senha"
+            required
+        >
+
+        <input
+            type="password"
+            name="confirmar_senha"
+            placeholder="Confirmar nova senha"
+            required
+        >
+
+        <button type="submit">
+            Alterar Senha
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

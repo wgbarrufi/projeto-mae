@@ -26,17 +26,42 @@ Partidas
             ⏰ {{ partida.data_hora.strftime('%H:%M') }}
         </p>
 
-            <a href="/apostar/{{ partida.id }}/CASA" class="btn-aposta">
-                Casa 
+        
+        <div class="odds-container">
+
+            <a href="/apostar/{{ partida.id }}/CASA"
+               class="btn-aposta">
+
+                Casa    
+
+                <span class="odd">
+                    Odd {{ "%.2f"|format(odds[partida.id]["CASA"]) }}
+                </span>
+
             </a>
-            &nbsp;
-            <a href="/apostar/{{ partida.id }}/EMPATE" class="btn-aposta">
+
+            <a href="/apostar/{{ partida.id }}/EMPATE"
+               class="btn-aposta">
+
                 Empate
+                <span class="odd">
+                    Odd {{ "%.2f"|format(odds[partida.id]["EMPATE"]) }}
+                </span>
+
             </a>
-            &nbsp;
-            <a href="/apostar/{{ partida.id }}/VISITANTE" class="btn-aposta">
+
+            <a href="/apostar/{{ partida.id }}/VISITANTE"
+               class="btn-aposta">
+
                 Visitante
+    
+                <span class="odd">
+                    Odd {{ "%.2f"|format(odds[partida.id]["VISITANTE"]) }}
+                </span>
+
             </a>
+
+        </div>
 
     </div>
 

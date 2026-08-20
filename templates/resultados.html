@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Resultados Anteriores
+{% endblock %}
+
+{% block conteudo %}
+
+<div class="admin-page">
+
+    <div class="admin-header">
+
+        <h1>Resultados Anteriores</h1>
+
+        <p>
+            Pesquise os jogos anteriores de um time.
+        </p>
+
+    </div>
+
+    <div class="admin-box">
+
+        <form method="POST">
+
+            <input
+                type="text"
+                name="time"
+                placeholder="Digite o nome do time..."
+                value="{{ pesquisa }}"
+                required
+            >
+
+            <button type="submit">
+                Pesquisar
+            </button>
+
+        </form>
+
+    </div>
+
+    {% if erro %}
+
+        <div class="admin-erro">
+            {{ erro }}
+        </div>
+
+    {% endif %}
+
+    {% if partidas %}
+
+        <div class="admin-box">
+
+            <h2>
+                Resultados encontrados
+            </h2>
+
+            <div class="tabela-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Data</th>
+                            <th>Partida</th>
+                            <th>Resultado</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for partida in partidas %}
+
+                        <tr>
+
+                            <td>
+                                {{ partida.data_hora.strftime('%d/%m/%Y %H:%M') }}
+                            </td>
+
+                            <td>
+                                {{ partida.time_casa }}
+                                x
+                                {{ partida.time_visitante }}
+                            </td>
+
+                            <td>
+                                <strong>
+                                    {{ partida.gols_casa }}
+                                    x
+                                    {{ partida.gols_visitante }}
+                                </strong>
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    {% elif pesquisou and not erro %}
+
+        <div class="admin-box">
+            <p>Nenhum resultado encontrado.</p>
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

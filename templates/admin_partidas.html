@@ -1,52 +1,148 @@
 {% extends 'base.html' %}
 
+{% block titulo %}
+Gerenciar Partidas
+{% endblock %}
+
 {% block conteudo %}
 
-<h1>Gerenciar Partidas</h1>
+<div class="admin-page">
 
-<table>
+    <div class="admin-header">
 
-    <tr>
-        <th>ID</th>
-        <th>Partida</th>
-        <th>Data</th>
-        <th>Status</th>
-        <th>Ações</th>
-    </tr>
+        <h1>Gerenciar Partidas</h1>
+
+        <p>
+            Visualize as partidas cadastradas e informe os resultados.
+        </p>
+
+    </div>
+<div class="filtros-partidas">
+
+    <input
+        type="text"
+        id="buscarPartida"
+        placeholder="🔍 Buscar por time..."
+    >
+
+    <select id="filtroStatus">
+
+        <option value="TODAS">
+            Todas as partidas
+        </option>
+
+        <option value="ABERTA">
+            Apenas abertas
+        </option>
+
+        <option value="ENCERRADA">
+            Apenas encerradas
+        </option>
+
+    </select>
+
+</div>
+
+    <div class="admin-box">
+
+        <div class="tabela-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Partida</th>
+                        <th>Data</th>
+                        <th>Placar</th>
+                        <th>Status</th>
+                        <th>Ação</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
 
     {% for partida in partidas %}
 
-    <tr>
-
-        <td>{{ partida.id }}</td>
+    <tr
+        class="linha-partida"
+        data-status="{% if partida.encerrada %}ENCERRADA{% else %}ABERTA{% endif %}"
+    >
 
         <td>
-            {{ partida.time_casa }}
-            x
-            {{ partida.time_visitante }}
+
+            <strong>
+                {{ partida.time_casa }}
+                x
+                {{ partida.time_visitante }}
+            </strong>
+
         </td>
 
+
         <td>
+
             {{ partida.data_hora.strftime('%d/%m/%Y %H:%M') }}
+
         </td>
+
 
         <td>
 
             {% if partida.encerrada %}
-                Encerrada
+
+                {{ partida.gols_casa }}
+                x
+                {{ partida.gols_visitante }}
+
             {% else %}
-                Aberta
+
+                -
+
             {% endif %}
 
         </td>
+
+
+        <td>
+
+            {% if partida.encerrada %}
+
+                <span class="status-encerrada">
+                    ENCERRADA
+                </span>
+
+            {% else %}
+
+                <span class="status-aberta">
+                    ABERTA
+                </span>
+
+            {% endif %}
+
+        </td>
+
 
         <td>
 
             {% if not partida.encerrada %}
 
-            <a href="/encerrar-partida/{{ partida.id }}">
-                Encerrar
-            </a>
+                <a
+                    href="/encerrar-partida/{{ partida.id }}"
+                    class="btn-encerrar"
+                >
+                    Encerrar
+                </a>
+
+            {% else %}
+
+                <span class="texto-finalizada">
+                    Finalizada
+                </span>
 
             {% endif %}
 
@@ -56,6 +152,85 @@
 
     {% endfor %}
 
-</table>
+</tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <a href="/admin" class="btn-voltar">
+
+        ← Voltar ao painel
+
+    </a>
+
+</div>
+
+<script>
+
+const campoBusca = document.getElementById("buscarPartida");
+const filtroStatus = document.getElementById("filtroStatus");
+
+const linhas = document.querySelectorAll(".linha-partida");
+
+
+function filtrarPartidas() {
+
+    const busca = campoBusca.value.toLowerCase();
+
+    const statusSelecionado = filtroStatus.value;
+
+
+    linhas.forEach(function(linha) {
+
+        const textoPartida = linha.innerText.toLowerCase();
+
+        const statusPartida = linha.dataset.status;
+
+
+        const correspondeBusca =
+            textoPartida.includes(busca);
+
+
+        const correspondeStatus =
+            statusSelecionado === "TODAS"
+            ||
+            statusPartida === statusSelecionado;
+
+
+        if (
+            correspondeBusca
+            &&
+            correspondeStatus
+        ) {
+
+            linha.style.display = "";
+
+        } else {
+
+            linha.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+campoBusca.addEventListener(
+    "input",
+    filtrarPartidas
+);
+
+
+filtroStatus.addEventListener(
+    "change",
+    filtrarPartidas
+);
+
+</script>
 
 {% endblock %}

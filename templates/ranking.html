@@ -6,26 +6,44 @@ Ranking
 
 {% block conteudo %}
 
-<section class="ranking-container">
+<div class="ranking-container">
 
-    <h1>Ranking de Jogadores</h1>
+    <h1>Ranking de Apostadores</h1>
 
     {% for usuario in usuarios %}
 
-    <div class="ranking-card">
+        <div class="ranking-card">
 
-        <h3>
-            {{ loop.index }}º - {{ usuario.nome }}
-        </h3>
+            <h3>
 
-        <p>
-            {{ usuario.pontos }} pts
-        </p>
+                {% if loop.index == 1 %}
+                    🥇
+                {% elif loop.index == 2 %}
+                    🥈
+                {% elif loop.index == 3 %}
+                    🥉
+                {% endif %}
 
-    </div>
+                {{ loop.index }}º - {{ usuario.nome }}
+
+            </h3>
+
+            <div>
+
+                <p>
+                    {{ usuario.acertos }} acertos
+                </p>
+                    <br>
+                <p>
+                    {{ usuario.pontos }} pts
+                </p>
+
+            </div>
+
+        </div>
 
     {% endfor %}
 
-</section>
+</div>
 
 {% endblock %}
